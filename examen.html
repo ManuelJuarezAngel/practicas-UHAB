@@ -33,15 +33,22 @@
                     }
 
                     alumnos.push({ nombre, asistencia });
-                }
 
+                    
+                }
+                console.log(alumnos)
                 /* Imprime en consola las asistencias */
                 console.log(`Asistencias: ${asistencias}`);
                 console.log(`Inasistencias: ${inasistencias}`);
 
                 /* Imprime en el document las asistencias */
                 document.write(`Asistencias: ${asistencias}`)
-                document.write(`<br>Inasistencias: ${inasistencias}`)
+                document.write(`<br>Inasistencias: ${inasistencias} <br>`)
+
+                alumnos.forEach(function(alumno){
+                    document.write(`Alumno: ${alumno["nombre"]} <br>`)
+                    document.write(`${alumno["nombre"]} asistio?: ${alumno["asistencia"]} <br>`)
+                })
 
                 const continuar = prompt("¿Desea registrar más asistencias? (Si/No)").toLowerCase();
                 if (continuar !== "si") {

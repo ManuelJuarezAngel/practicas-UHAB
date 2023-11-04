@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Asistencia de Alumnos</h1>
+    <script>
+        let asistencias = 0;
+        let inasistencias = 0;
+
+        do {
+            const numAlumnos = parseInt(prompt("Ingrese el número de alumnos:"));
+
+            if (!isNaN(numAlumnos) && numAlumnos > 0) {
+                const alumnos = [];
+
+                for (let i = 0; i < numAlumnos; i++) {
+                    const nombre = prompt(`Nombre del alumno ${i + 1}:`);
+                    let asistencia;
+
+                    do {
+                        asistencia = prompt(`¿${nombre} asistió? (Si/No)`).toLowerCase();
+                    } while (asistencia !== "si" && asistencia !== "no");
+
+                    if (asistencia === "si") {
+                        asistencias++;
+                    } else {
+                        inasistencias++;
+                    }
+
+                    alumnos.push({ nombre, asistencia });
+                }
+
+                /* Imprime en consola las asistencias */
+                console.log(`Asistencias: ${asistencias}`);
+                console.log(`Inasistencias: ${inasistencias}`);
+
+                /* Imprime en el document las asistencias */
+                document.write(`Asistencias: ${asistencias}`)
+                document.write(`<br>Inasistencias: ${inasistencias}`)
+
+                const continuar = prompt("¿Desea registrar más asistencias? (Si/No)").toLowerCase();
+                if (continuar !== "si") {
+                    break;
+                }
+            } else {
+                alert("Por favor, ingrese un número válido de alumnos.");
+            }
+        } while (true);
+    </script>
+
+    <h1>Encuesta</h1>
+    <script>
+        let puntuacion = 0;
+
+        for (let i = 1; i <= 10; i++) {
+            const respuesta = parseInt(prompt(`Pregunta ${i}: En una escala de 1 a 10, ¿cuánto sabe sobre el tema?`));
+
+            if (!isNaN(respuesta) && respuesta >= 1 && respuesta <= 10) {
+                puntuacion += respuesta;
+            } else {
+                alert("Por favor, ingrese una puntuación válida (entre 1 y 10).");
+                i--; 
+            }
+        }
+
+        let rango;
+        if (puntuacion >= 10 && puntuacion <= 20) {
+            rango = "principiante en el tema";
+        } else if (puntuacion >= 21 && puntuacion <= 40) {
+            rango = "aficionado en el tema";
+        } else if (puntuacion >= 41 && puntuacion <= 70) {
+            rango = "junior en el tema";
+        } else if (puntuacion >= 71 && puntuacion <= 100) {
+            rango = "experto en el tema";
+        }
+         /* Imprime en consola la puntuacion */
+        console.log(`Su rango en el tema es: ${rango}`);
+
+        /* Imprime en el document la puntuacion */
+        document.write(`Su rango en el tema es: ${rango}`)
+    </script>
+</body>
+
+</html>
